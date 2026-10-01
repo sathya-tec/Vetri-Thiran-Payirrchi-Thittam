@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home Planner — PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="planner">
+
+    <div class="page-head">
+
+        <p class="eyebrow">
+            HOME INTERIOR PLANNER
+        </p>
+
+        <h1>
+            Build a room plan
+            around your budget.
+        </h1>
+
+    </div>
+
+
+    <form
+        id="homeForm"
+        class="planner-form"
+    >
+
+        <label>
+
+            Total budget (₹)
+
+            <input
+                type="number"
+                name="budget"
+                min="1"
+                required
+                placeholder="50000"
+            >
+
+        </label>
+
+
+        <label>
+
+            Rooms
+
+            <select
+                name="rooms"
+                multiple
+                required
+            >
+
+                <option>
+                    Living Room
+                </option>
+
+                <option>
+                    Bedroom
+                </option>
+
+                <option>
+                    Kitchen
+                </option>
+
+                <option>
+                    Dining Room
+                </option>
+
+                <option>
+                    Study Room
+                </option>
+
+                <option>
+                    Balcony
+                </option>
+
+            </select>
+
+            <small>
+                Hold Ctrl/Cmd to select
+                multiple rooms.
+            </small>
+
+        </label>
+
+
+        <label>
+
+            Style
+
+            <select name="style">
+
+                <option>
+                    modern
+                </option>
+
+                <option>
+                    minimal
+                </option>
+
+                <option>
+                    traditional
+                </option>
+
+                <option>
+                    boho
+                </option>
+
+                <option>
+                    contemporary
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Notes
+
+            <textarea
+                name="notes"
+                placeholder="Colours, must-have items, space constraints..."
+            ></textarea>
+
+        </label>
+
+
+        <button
+            class="btn primary"
+            type="submit"
+        >
+            Generate home plan
+        </button>
+
+    </form>
+
+
+    <div
+        id="result"
+        class="result"
+    ></div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+setupJSONPlanner(
+    "homeForm",
+    "/api/generate-home"
+);
+
+</script>
+
+{% endblock %}

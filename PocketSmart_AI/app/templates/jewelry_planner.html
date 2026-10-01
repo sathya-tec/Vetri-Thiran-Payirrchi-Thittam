@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}
+Jewelry Planner — PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="planner">
+
+    <div class="page-head">
+
+        <p class="eyebrow">
+            JEWELRY BUDGET PLANNER
+        </p>
+
+        <h1>
+            Find a coordinated jewelry
+            direction within budget.
+        </h1>
+
+    </div>
+
+
+    <form
+        id="jewelryForm"
+        class="planner-form"
+        enctype="multipart/form-data"
+    >
+
+        <label>
+
+            Budget (₹)
+
+            <input
+                type="number"
+                name="budget"
+                min="1"
+                required
+                placeholder="5000"
+            >
+
+        </label>
+
+
+        <label>
+
+            Occasion
+
+            <input
+                name="occasion"
+                required
+                placeholder="Wedding guest"
+            >
+
+        </label>
+
+
+        <label>
+
+            Style
+
+            <select name="style">
+
+                <option>
+                    elegant
+                </option>
+
+                <option>
+                    minimal
+                </option>
+
+                <option>
+                    traditional
+                </option>
+
+                <option>
+                    statement
+                </option>
+
+                <option>
+                    contemporary
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Outfit colour
+
+            <input
+                name="outfit_color"
+                placeholder="Maroon, black, ivory..."
+            >
+
+        </label>
+
+
+        <label>
+
+            Outfit image (optional)
+
+            <input
+                type="file"
+                name="outfit_image"
+                accept="image/png,image/jpeg,image/webp"
+            >
+
+        </label>
+
+
+        <label>
+
+            Notes
+
+            <textarea
+                name="notes"
+                placeholder="Neckline, sleeve length, preferred metal..."
+            ></textarea>
+
+        </label>
+
+
+        <button
+            class="btn primary"
+            type="submit"
+        >
+            Generate jewelry plan
+        </button>
+
+    </form>
+
+
+    <div
+        id="result"
+        class="result"
+    ></div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+setupMultipartPlanner(
+    "jewelryForm",
+    "/api/generate-jewelry"
+);
+
+</script>
+
+{% endblock %}
